@@ -1,0 +1,19 @@
+services:
+  bdf_queue.messenger_transport.factory:
+    class: 'App\Component\QueueMessengerBundle\Transport\QueueTransportFactory'
+#    class: 'Bdf\QueueMessengerBundle\Transport\QueueTransportFactory'
+    arguments:
+      - '@bdf_queue.destination_manager'
+      - '@bdf_queue.messenger_transport.stamp_serializer'
+    tags: ['messenger.transport_factory']
+
+  bdf_queue.messenger_transport.stamp_serializer:
+    class: 'App\Component\QueueMessengerBundle\Transport\Stamp\PhpStampsSerializer'
+#    class: 'Bdf\QueueMessengerBundle\Transport\Stamp\PhpStampsSerializer'
+
+  bdf_queue.messenger_bus_handler:
+    alias: 'App\Component\QueueMessengerBundle\Transport\Handler\MessageBusHandler'
+
+  App\Component\QueueMessengerBundle\Transport\Handler\MessageBusHandler:
+    class: 'App\Component\QueueMessengerBundle\Transport\Handler\MessageBusHandler'
+    arguments: ['@messenger.routable_message_bus', '@bdf_queue.messenger_transport.stamp_serializer']
