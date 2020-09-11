@@ -9,9 +9,9 @@ use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 /**
- * QueueMessengerExtension
+ * BdfQueueMessengerExtension
  */
-class QueueMessengerExtension extends Extension
+class BdfQueueMessengerExtension extends Extension
 {
     use PriorityTaggedServiceTrait;
 
