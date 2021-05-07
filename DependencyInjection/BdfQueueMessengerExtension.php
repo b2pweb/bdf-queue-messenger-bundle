@@ -3,7 +3,6 @@
 namespace Bdf\QueueMessengerBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\Compiler\PriorityTaggedServiceTrait;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -13,8 +12,6 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  */
 class BdfQueueMessengerExtension extends Extension
 {
-    use PriorityTaggedServiceTrait;
-
     /**
      * {@inheritDoc}
      */
