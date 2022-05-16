@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" backupGlobals="false" colors="true" bootstrap="vendor/autoload.php" failOnRisky="true" failOnWarning="true">
-  <coverage>
-    <include>
-      <directory>./</directory>
-    </include>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/5.2/phpunit.xsd"
+         backupGlobals="false"
+         colors="true"
+         bootstrap="vendor/autoload.php"
+         failOnRisky="true"
+         failOnWarning="true"
+>
+<php>
+  <ini name="display_errors" value="1" />
+  <ini name="error_reporting" value="-1" />
+  <env name="SYMFONY_DEPRECATIONS_HELPER" value="999999" />
+</php>
+
+<testsuites>
+  <testsuite name="Bdf Queue messenger bundle Test Suite">
+    <directory>./Tests/</directory>
+  </testsuite>
+</testsuites>
+
+<filter>
+  <whitelist>
+    <directory>./</directory>
     <exclude>
       <directory>./Resources</directory>
       <directory>./Tests</directory>
       <directory>./vendor</directory>
     </exclude>
-  </coverage>
-  <php>
-    <ini name="display_errors" value="1"/>
-    <ini name="error_reporting" value="-1"/>
-    <env name="SYMFONY_DEPRECATIONS_HELPER" value="999999"/>
-  </php>
-  <testsuites>
-    <testsuite name="Bdf Queue messenger bundle Test Suite">
-      <directory>./Tests/</directory>
-    </testsuite>
-  </testsuites>
+  </whitelist>
+</filter>
 </phpunit>
