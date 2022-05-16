@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/b2pweb/bdf-queue-messenger-bundle.svg?branch=master)](https://travis-ci.org/b2pweb/bdf-queue-messenger-bundle)
+[![build](https://github.com/b2pweb/bdf-queue-messenger-bundle/actions/workflows/php.yml/badge.svg)](https://github.com/b2pweb/bdf-queue-messenger-bundle/actions/workflows/php.yml)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/b2pweb/bdf-queue-messenger-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/b2pweb/bdf-queue-messenger-bundle/?branch=master)
 [![Packagist Version](https://img.shields.io/packagist/v/b2pweb/bdf-queue-messenger-bundle.svg)](https://packagist.org/packages/b2pweb/bdf-queue-messenger-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/b2pweb/bdf-queue-messenger-bundle.svg)](https://packagist.org/packages/b2pweb/bdf-queue-messenger-bundle)
