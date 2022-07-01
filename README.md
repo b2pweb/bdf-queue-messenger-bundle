@@ -41,5 +41,5 @@ Edit the config file to `./config/packages/messenger.yaml`
 framework:
     messenger:
         transports:
-             async: 'bdfqueue://my_bus?consumer_timeout=1'
+             async: 'bdfqueue://my_bus?consumer_timeout=1?stamp_serializer=null'
 ```
