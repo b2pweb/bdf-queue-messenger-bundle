@@ -3,7 +3,7 @@
 namespace Bdf\QueueMessengerBundle\Transport\Stamp;
 
 /**
- * Serializer using native PHP serialize methods
+ * Serializer using native PHP serialize methods.
  *
  * Note: This serializer is unsecured, and must not be used on public channels
  */

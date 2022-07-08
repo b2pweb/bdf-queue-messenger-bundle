@@ -5,12 +5,9 @@ namespace Bdf\QueueMessengerBundle\Tests\Transport\Stamp;
 use Bdf\QueueMessengerBundle\Transport\Stamp\NullStampsSerializer;
 use PHPUnit\Framework\TestCase;
 
-/**
- *
- */
 class NullStampsSerializerTest extends TestCase
 {
-    public function test_serializer()
+    public function testSerializer()
     {
         $serializer = new NullStampsSerializer();
 

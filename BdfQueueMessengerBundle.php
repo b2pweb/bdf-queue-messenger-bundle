@@ -5,7 +5,7 @@ namespace Bdf\QueueMessengerBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * QueueMessengerBundle
+ * QueueMessengerBundle.
  *
  * @author Seb
  */
