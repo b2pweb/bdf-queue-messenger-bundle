@@ -11,9 +11,6 @@ use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 use Symfony\Component\Messenger\Transport\TransportFactoryInterface;
 use Symfony\Component\Messenger\Transport\TransportInterface;
 
-/**
- *
- */
 class QueueTransportFactory implements TransportFactoryInterface
 {
     private $manager;
@@ -26,9 +23,6 @@ class QueueTransportFactory implements TransportFactoryInterface
 
     /**
      * QueueTransportFactory constructor.
-     *
-     * @param DestinationManager $manager
-     * @param StampsSerializerInterface|null $stampsSerializer
      */
     public function __construct(DestinationManager $manager, StampsSerializerInterface $stampsSerializer = null)
     {
@@ -41,22 +35,14 @@ class QueueTransportFactory implements TransportFactoryInterface
     }
 
     /**
-     * @param string $name The serializer name
+     * @param string                               $name    The serializer name
      * @param callable():StampsSerializerInterface $factory
-     * @return void
      */
     public function registerStampSerializer(string $name, callable $factory): void
     {
         $this->serializersFactories[$name] = $factory;
     }
 
-    /**
-     * @param string $dsn
-     * @param array $options
-     * @param SerializerInterface $serializer
-     *
-     * @return TransportInterface
-     */
     public function createTransport(string $dsn, array $options, SerializerInterface $serializer): TransportInterface
     {
         $request = Dsn::parse($dsn);
@@ -70,12 +56,6 @@ class QueueTransportFactory implements TransportFactoryInterface
         return new QueueTransport($this->manager->guess($request->getHost()), $stampSerializer, $request->query('consumer_timeout', 1));
     }
 
-    /**
-     * @param string $dsn
-     * @param array $options
-     *
-     * @return bool
-     */
     public function supports(string $dsn, array $options): bool
     {
         return 0 === strpos($dsn, 'bdfqueue');

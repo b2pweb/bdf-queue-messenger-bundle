@@ -3,7 +3,7 @@
 namespace Bdf\QueueMessengerBundle\Transport\Stamp;
 
 /**
- * Do not serialize nor deserialize stamps
+ * Do not serialize nor deserialize stamps.
  *
  * This serializer should be used on cross applications channels, and it's by nature totally safe
  */

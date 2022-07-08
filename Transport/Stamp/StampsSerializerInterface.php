@@ -5,7 +5,7 @@ namespace Bdf\QueueMessengerBundle\Transport\Stamp;
 use Symfony\Component\Messenger\Stamp\StampInterface;
 
 /**
- * Handle serialisation and deserialization of envelope stamps
+ * Handle serialisation and deserialization of envelope stamps.
  *
  * The serialisation format is not defined (i.e. may be an array of a string),
  * but the same serializer must be used for serialize and deserialize
@@ -13,7 +13,7 @@ use Symfony\Component\Messenger\Stamp\StampInterface;
 interface StampsSerializerInterface
 {
     /**
-     * Serialize the stamps
+     * Serialize the stamps.
      *
      * @param StampInterface[] $stamps
      *
@@ -22,7 +22,7 @@ interface StampsSerializerInterface
     public function serialize(array $stamps);
 
     /**
-     * Extract stamps from the serialized value
+     * Extract stamps from the serialized value.
      *
      * @param mixed $serialized
      *

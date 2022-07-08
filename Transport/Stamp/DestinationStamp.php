@@ -6,11 +6,11 @@ use Bdf\Queue\Message\Message;
 use Symfony\Component\Messenger\Stamp\StampInterface;
 
 /**
- * DestinationStamp configuration
+ * DestinationStamp configuration.
  */
 class DestinationStamp implements StampInterface
 {
-    const RPC_TIMEOUT = 1000;
+    public const RPC_TIMEOUT = 1000;
 
     private $messageName;
     private $maxTries;
@@ -20,8 +20,6 @@ class DestinationStamp implements StampInterface
     private $headers = [];
 
     /**
-     * @param string|null $messageName
-     *
      * @return $this
      */
     public function setMessageName(?string $messageName)
@@ -31,9 +29,6 @@ class DestinationStamp implements StampInterface
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getMessageName(): ?string
     {
         return $this->messageName;
@@ -41,7 +36,7 @@ class DestinationStamp implements StampInterface
 
     /**
      * Change the message max retry count
-     * If set to zero, default retry count is used
+     * If set to zero, default retry count is used.
      *
      * @param int $value
      *
@@ -55,7 +50,7 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * Get max number of retry
+     * Get max number of retry.
      *
      * @return int
      */
@@ -65,9 +60,7 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * Disable storing job when failed
-     *
-     * @param bool $flag
+     * Disable storing job when failed.
      *
      * @return $this
      */
@@ -80,19 +73,15 @@ class DestinationStamp implements StampInterface
 
     /**
      * Does the job should be saved when failed to execute ?
-     * If the return value is true, the failed job should not be stored
-     *
-     * @return null|true
+     * If the return value is true, the failed job should not be stored.
      */
     public function noStore(): bool
     {
-        return (bool)$this->noStore;
+        return (bool) $this->noStore;
     }
 
     /**
-     * Change the rpc timeout (in milliseconds)
-     *
-     * @param int $value
+     * Change the rpc timeout (in milliseconds).
      *
      * @return $this
      */
@@ -104,9 +93,7 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * Get the rpc timeout
-     *
-     * @return int
+     * Get the rpc timeout.
      */
     public function getRpcTimeout(): int
     {
@@ -114,7 +101,7 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * Defines if the message needs a reply or not
+     * Defines if the message needs a reply or not.
      *
      * @param bool $needsReply true for enable reply
      *
@@ -130,19 +117,15 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * Check whether the message needs reply
-     *
-     * @return bool
+     * Check whether the message needs reply.
      */
     public function getNeedsReply(): bool
     {
-        return (bool)$this->needsReply;
+        return (bool) $this->needsReply;
     }
 
     /**
-     * Set the message driver options
-     *
-     * @param array $headers
+     * Set the message driver options.
      *
      * @return $this
      */
@@ -155,8 +138,6 @@ class DestinationStamp implements StampInterface
 
     /**
      * Get all message headers.
-     *
-     * @return array
      */
     public function getHeaders(): array
     {
@@ -164,7 +145,6 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * @param string $topic
      * @return $this
      */
     public function setTopic(string $topic)
@@ -175,7 +155,6 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * @param string $value
      * @return $this
      */
     public function setReplyTo(string $value)
@@ -186,7 +165,6 @@ class DestinationStamp implements StampInterface
     }
 
     /**
-     * @param string $value
      * @return $this
      */
     public function setCorrelationId(string $value)

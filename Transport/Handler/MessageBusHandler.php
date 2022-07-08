@@ -14,7 +14,7 @@ use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 
 /**
  * Job for dispatch a queued command to the bus
- * If the message do not contains a valid object as data, an InternalMessage is dispatched
+ * If the message do not contains a valid object as data, an InternalMessage is dispatched.
  *
  * If the a reply is requested on the message,
  * a synchronised dispatch is performed,
@@ -23,7 +23,7 @@ use Symfony\Component\Messenger\Stamp\ReceivedStamp;
 class MessageBusHandler
 {
     /**
-     * The command dispatcher
+     * The command dispatcher.
      *
      * @var MessageBusInterface
      */
@@ -34,12 +34,8 @@ class MessageBusHandler
      */
     private $stampsSerializer;
 
-
     /**
-     * Constructor
-     *
-     * @param MessageBusInterface $dispatcher
-     * @param StampsSerializerInterface|null $stampsSerializer
+     * Constructor.
      */
     public function __construct(MessageBusInterface $dispatcher, StampsSerializerInterface $stampsSerializer = null)
     {
@@ -48,10 +44,9 @@ class MessageBusHandler
     }
 
     /**
-     * Handle a queued command
+     * Handle a queued command.
      *
      * @param mixed $message
-     * @param QueuedEnvelope $queuedEnvelope
      */
     public function __invoke($message, QueuedEnvelope $queuedEnvelope)
     {
@@ -65,12 +60,9 @@ class MessageBusHandler
     }
 
     /**
-     * Dispatch the envelope to the bus
+     * Dispatch the envelope to the bus.
      *
      * If the message is replyable and a reply is requested, a synchronized call is performed and the result is returned
-     *
-     * @param Envelope $envelope
-     * @param QueuedEnvelope $queuedEnvelope
      */
     private function dispatch(Envelope $envelope, QueuedEnvelope $queuedEnvelope): void
     {
@@ -89,12 +81,9 @@ class MessageBusHandler
     }
 
     /**
-     * Get the envelope from the message payload
+     * Get the envelope from the message payload.
      *
      * @param mixed $message
-     * @param QueuedEnvelope $queuedEnvelope
-     *
-     * @return Envelope
      */
     private function toEnvelope($message, QueuedEnvelope $queuedEnvelope): Envelope
     {

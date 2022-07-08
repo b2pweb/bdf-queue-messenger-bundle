@@ -16,13 +16,10 @@ use Symfony\Component\Messenger\Stamp\DelayStamp;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Messenger\Transport\TransportInterface;
 
-/**
- *
- */
 class QueueTransport implements TransportInterface
 {
     /**
-     * The destinations instance
+     * The destinations instance.
      *
      * @var DestinationInterface
      */
@@ -38,13 +35,10 @@ class QueueTransport implements TransportInterface
      */
     private $consumerTimeout;
 
-
     /**
-     * Constructor
+     * Constructor.
      *
      * @param DestinationInterface $manager
-     * @param StampsSerializerInterface $stampsSerializer
-     * @param int $consumerTimeout
      */
     public function __construct(DestinationInterface $destination, StampsSerializerInterface $stampsSerializer, int $consumerTimeout = 1)
     {
@@ -74,12 +68,9 @@ class QueueTransport implements TransportInterface
     }
 
     /**
-     * Get the envelope from the message payload
+     * Get the envelope from the message payload.
      *
      * @param mixed $message
-     * @param QueuedEnvelope $queuedEnvelope
-     *
-     * @return Envelope
      */
     private function toEnvelope($message, QueuedEnvelope $queuedEnvelope): Envelope
     {
@@ -128,7 +119,7 @@ class QueueTransport implements TransportInterface
         $queueMessage->setMaxTries($destinationStamp->getMaxTries());
         $queueMessage->disableStore($destinationStamp->noStore());
         $queueMessage->setNeedsReply($destinationStamp->getNeedsReply());
-        $queueMessage->setDelay($delayStamp !== null ? $delayStamp->getDelay() : 0);
+        $queueMessage->setDelay(null !== $delayStamp ? $delayStamp->getDelay() : 0);
         $queueMessage->setHeaders($destinationStamp->getHeaders());
         $queueMessage->addHeader('stamps', $this->serializeStamps($envelope));
 
@@ -145,7 +136,7 @@ class QueueTransport implements TransportInterface
 
     /**
      * Extract stamps from the envelope
-     * The returned value is a serialization of a single dimension array
+     * The returned value is a serialization of a single dimension array.
      */
     private function serializeStamps(Envelope $envelope): string
     {
@@ -161,7 +152,7 @@ class QueueTransport implements TransportInterface
     }
 
     /**
-     * Extract stamps from the queued envelope
+     * Extract stamps from the queued envelope.
      */
     private function unserializeStamps(QueuedEnvelope $queuedEnvelope): array
     {
@@ -172,4 +163,3 @@ class QueueTransport implements TransportInterface
         return [];
     }
 }
-

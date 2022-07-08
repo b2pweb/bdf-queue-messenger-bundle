@@ -13,12 +13,9 @@ use Bdf\QueueMessengerBundle\Transport\Stamp\StampsSerializerInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Messenger\Transport\Serialization\SerializerInterface;
 
-/**
- *
- */
 class QueueTransportFactoryTest extends TestCase
 {
-    public function test_factory()
+    public function testFactory()
     {
         $destinations = new DestinationManager(
             $this->createMock(ConnectionDriverFactoryInterface::class),
@@ -31,7 +28,7 @@ class QueueTransportFactoryTest extends TestCase
         $this->assertFalse($factory->supports('amqp://root@localhost', []));
     }
 
-    public function test_create_transport()
+    public function testCreateTransport()
     {
         $destinations = new DestinationManager(
             $this->createMock(ConnectionDriverFactoryInterface::class),
@@ -44,7 +41,7 @@ class QueueTransportFactoryTest extends TestCase
         $this->assertInstanceOf(QueueTransport::class, $transport);
     }
 
-    public function test_create_transport_with_configured_stamp_serializer()
+    public function testCreateTransportWithConfiguredStampSerializer()
     {
         $destinations = new DestinationManager(
             $this->createMock(ConnectionDriverFactoryInterface::class),
