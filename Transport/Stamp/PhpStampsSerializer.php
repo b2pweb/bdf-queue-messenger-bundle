@@ -9,17 +9,11 @@ namespace Bdf\QueueMessengerBundle\Transport\Stamp;
  */
 final class PhpStampsSerializer implements StampsSerializerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function serialize(array $stamps)
     {
         return serialize($stamps);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function deserialize($serialized): array
     {
         return unserialize($serialized);

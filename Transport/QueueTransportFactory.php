@@ -24,7 +24,7 @@ class QueueTransportFactory implements TransportFactoryInterface
     /**
      * QueueTransportFactory constructor.
      */
-    public function __construct(DestinationManager $manager, StampsSerializerInterface $stampsSerializer = null)
+    public function __construct(DestinationManager $manager, ?StampsSerializerInterface $stampsSerializer = null)
     {
         $this->manager = $manager;
         $this->defaultStampsSerializer = $stampsSerializer ?: new PhpStampsSerializer();

@@ -37,8 +37,6 @@ class QueueTransport implements TransportInterface
 
     /**
      * Constructor.
-     *
-     * @param DestinationInterface $manager
      */
     public function __construct(DestinationInterface $destination, StampsSerializerInterface $stampsSerializer, int $consumerTimeout = 1)
     {
@@ -47,9 +45,6 @@ class QueueTransport implements TransportInterface
         $this->consumerTimeout = $consumerTimeout;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get(): iterable
     {
         $stack = new StackMessagesReceiver();
@@ -69,8 +64,6 @@ class QueueTransport implements TransportInterface
 
     /**
      * Get the envelope from the message payload.
-     *
-     * @param mixed $message
      */
     private function toEnvelope($message, QueuedEnvelope $queuedEnvelope): Envelope
     {
@@ -81,9 +74,6 @@ class QueueTransport implements TransportInterface
         return new Envelope($message, $this->unserializeStamps($queuedEnvelope));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function ack(Envelope $envelope): void
     {
         /** @var BdfQueueReceivedStamp $stamp */
@@ -91,9 +81,6 @@ class QueueTransport implements TransportInterface
         $stamp->getEnvelope()->acknowledge();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function reject(Envelope $envelope): void
     {
         /** @var BdfQueueReceivedStamp $stamp */
@@ -101,9 +88,6 @@ class QueueTransport implements TransportInterface
         $stamp->getEnvelope()->reject();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function send(Envelope $envelope): Envelope
     {
         $message = $envelope->getMessage();

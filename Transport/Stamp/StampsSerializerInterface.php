@@ -16,15 +16,11 @@ interface StampsSerializerInterface
      * Serialize the stamps.
      *
      * @param StampInterface[] $stamps
-     *
-     * @return mixed
      */
     public function serialize(array $stamps);
 
     /**
      * Extract stamps from the serialized value.
-     *
-     * @param mixed $serialized
      *
      * @return StampInterface[]
      */

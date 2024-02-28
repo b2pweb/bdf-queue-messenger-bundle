@@ -38,8 +38,6 @@ class DestinationStamp implements StampInterface
      * Change the message max retry count
      * If set to zero, default retry count is used.
      *
-     * @param int $value
-     *
      * @return $this
      */
     public function setMaxTries(?int $value)
@@ -51,8 +49,6 @@ class DestinationStamp implements StampInterface
 
     /**
      * Get max number of retry.
-     *
-     * @return int
      */
     public function getMaxTries(): ?int
     {

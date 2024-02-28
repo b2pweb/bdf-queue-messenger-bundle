@@ -9,17 +9,11 @@ namespace Bdf\QueueMessengerBundle\Transport\Stamp;
  */
 final class NullStampsSerializer implements StampsSerializerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function serialize(array $stamps)
     {
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function deserialize($serialized): array
     {
         return [];

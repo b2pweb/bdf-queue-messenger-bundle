@@ -37,7 +37,7 @@ class MessageBusHandler
     /**
      * Constructor.
      */
-    public function __construct(MessageBusInterface $dispatcher, StampsSerializerInterface $stampsSerializer = null)
+    public function __construct(MessageBusInterface $dispatcher, ?StampsSerializerInterface $stampsSerializer = null)
     {
         $this->dispatcher = $dispatcher;
         $this->stampsSerializer = $stampsSerializer ?: new NullStampsSerializer();
@@ -45,8 +45,6 @@ class MessageBusHandler
 
     /**
      * Handle a queued command.
-     *
-     * @param mixed $message
      */
     public function __invoke($message, QueuedEnvelope $queuedEnvelope)
     {
@@ -82,8 +80,6 @@ class MessageBusHandler
 
     /**
      * Get the envelope from the message payload.
-     *
-     * @param mixed $message
      */
     private function toEnvelope($message, QueuedEnvelope $queuedEnvelope): Envelope
     {
@@ -92,12 +88,12 @@ class MessageBusHandler
         }
 
         // TODO How to handle non object message
-//        if (!is_object($message)) {
-//            $message = new InternalMessage(
-//                $queuedEnvelope->message()->name() ?: $queuedEnvelope->message()->queue(),
-//                $message
-//            );
-//        }
+        //        if (!is_object($message)) {
+        //            $message = new InternalMessage(
+        //                $queuedEnvelope->message()->name() ?: $queuedEnvelope->message()->queue(),
+        //                $message
+        //            );
+        //        }
 
         if ($stamps = $queuedEnvelope->message()->header('stamps')) {
             return new Envelope($message, $this->stampsSerializer->deserialize($stamps));
